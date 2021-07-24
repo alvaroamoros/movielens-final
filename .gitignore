@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+ml-10M100K/movies.dat
+ml-10M100K/ratings.dat
+validation.Rda
+edx.Rda
