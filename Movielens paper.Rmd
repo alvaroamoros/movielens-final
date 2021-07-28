@@ -3,8 +3,8 @@ title: "Movielens Recomendation System"
 author: "Álvaro Amorós Rodríguez"
 date: "16/4/2021"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 subtitle: "HarvardX: PH125.9x Data Science: Capstone"
 ---
 # 1.Introduction.
@@ -35,13 +35,15 @@ library(lubridate)
 library(recosystem)
 library(gridExtra )
 library(dplyr, warn.conflicts = FALSE)
+
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
-load("edx.rda")
-load("validation.rda")
+load("edx.Rda")
+load("validation.Rda")
 edx$X <- NULL
 validation$X <- NULL
+
 
 
 ```
@@ -699,12 +701,18 @@ rmse_results %>% knitr::kable(caption = "Models", align = "l")
 
 
 
+
 ```
 
 # 4. Conclusions.
-The collaborative filtering model has proven to be by far the best model to predict ratings, and supposes a significant increase in the RMSE when compared to linear models, besides that, the model only needs a feedback matrix to be trained as it does not require any type contextual features which can be useful in situations where we lack labeled information. A last advantage of this approach is that it can be used to discover new interests of the users and hidden structures in the data (although this is not done in this project.)Regarding the limitations, the most important one is the incapacity of the model to rate new items, as if the item was not present in the train set, it will not be able to generate any prediction. The second limitation comes from the incapacity of the model to use secondary information besides it meId and rating, in the case of this dataset, other type of model could use gender or timestamp as predictors, but there is not straightforwards method to incorporate this information to a collaborative filtering model.   
+The collaborative filtering model has proven to be by far the best model to predict ratings, and supposes a significant increase in the RMSE when compared to linear models, besides that, the model only needs a feedback matrix to be trained as it does not require any type contextual features which can be useful in situations where we lack labeled information. A last advantage of this approach is that it can be used to discover new interests of the users and hidden structures in the data (although this is not done in this project.)Regarding the limitations, the most important one is the incapacity of the model to rate new items, as if the item was not present in the train set, it will not be able to generate any prediction. The second limitation comes from the incapacity of the model to use secondary information besides its Id and rating, in the case of this dataset, other type of model could use genre or timestamp as predictors, but there is not straightforwards method to incorporate this information to a collaborative filtering model.   
 
 Regarding the linear model, it yields a significantly weaker RMSE when compared to matrix factorization. Even so, a simple linear model which includes user and movie effects is enough to meet the exercise requirements. This model has the advantages of being straightforward to interpret and easy to implement. By using regularization techniques the model improves even further, but there is not a significant difference. Finally, the linear model could be improved by using the genre information and to some extend the timestamp information, but due to the memory limitations of this computer this could not be done.  
 
-Both approaches yielded satisfactory results and met the required RMSE of the exercise being both valid methods to predict ratings. The linear model is computationally more efficient and is straightforward to understand an implement, but yields the worst RMSE, on the contrary, the collaborative filtering model is computationally demanding, and difficult to interpret, but with it we obtain the best RMSE.
+Both approaches yielded satisfactory results and met the required RMSE of the exercise being both valid methods to predict ratings. The linear model is computationally more efficient and is straightforward to understand an implement, but yields the worst RMSE, on the contrary, the collaborative filtering model is computationally demanding, and difficult to interpret, but with it we obtain the best RMSE.      
+
+
+# Bibliography.
+
+*Introduction to Data Science Data Analysis and Prediction Algorithms with R Rafael A. Irizarry 2021-07-03*
 
